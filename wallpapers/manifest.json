@@ -878,5 +878,20 @@
     "sha1": "b52ad3ffc55cd57812cdc65a02621ab8897a0d67",
     "url": "https://sci2-1.am.microsoft.com/211498527862708642/evergreen_1147673_500kb_1920x1080.jpg",
     "date": "2016-06-16T12:01:36Z"
+  },
+  {
+    "sha1": "daec68a9238a8c2eca71907e41795890e13072ab",
+    "url": "https://sci1-1.am.microsoft.com/211545196357735141/evergreen_88990905_500kb_1920x1080.jpg",
+    "date": "2016-06-16T12:05:38Z"
+  },
+  {
+    "sha1": "dae47df468232d461185721302fb8a5470fa254e",
+    "url": "https://sci1-1.am.microsoft.com/211551780837816027/evergreen_offset_55453_500kb_1920x1080.jpg",
+    "date": "2016-06-16T12:05:38Z"
+  },
+  {
+    "sha1": "8dde5c3b4cfd76fb603b74e2f18beafbc14b9d30",
+    "url": "https://sci1-1.am.microsoft.com/262259049104037003/image_fullscreen_001_landscape.jpg",
+    "date": "2016-06-16T12:05:39Z"
   }
 ]
