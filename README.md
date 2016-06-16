@@ -12,4 +12,4 @@
 - Setup cron job
   - Run twice daily (6a and 6p)
   - `crontab -e`
-  - `0 6,18 * * * cd /srv/www/wallpapers && ./run.sh 2>&1 | /usr/bin/logger -t wallpapers`
+  - `0 6,18 * * * cd /srv/www/wallpapers && ./update.sh 2>&1 | /usr/bin/logger -t wallpapers`
