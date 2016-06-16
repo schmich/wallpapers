@@ -7,13 +7,14 @@ source ./image.sh
 
 function update-bing-lang {
   lang=$1
-  path=`curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=$lang" | jq '.images[0].url' | tr -d '"'`
-  if [ -z "$path" ]; then
+  basepath=`curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=$lang" | jq -r '.images[0].urlbase'`
+
+  if [ -z "$basepath" ]; then
     echo "[bing/$lang] Unable to find wallpaper URL, skipping."
     return
   fi
   
-  url="http://www.bing.com$path"
+  url="http://www.bing.com${basepath}_1920x1080.jpg"
   
   echo "[bing/$lang] Found $url."
   
