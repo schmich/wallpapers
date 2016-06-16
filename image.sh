@@ -37,6 +37,7 @@ function store-image() {
 
   if [ $? -ne 0 ]; then
     echo "Failed to download image from $url."
+    rm "$image_tmp"
     return
   fi
 
