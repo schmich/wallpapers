@@ -41,9 +41,9 @@ function update-bing {
 function update-spotlight {
   dir=$1
 
-  spotlight="http://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&cfmt=text,image,poly&sft=jpeg,png,gif&rafb=0&ctry=US&lc=en-US&pl=en-US&ua=Wallpapers&devfam=Windows.Desktop&disphorzres=1920&dispvertres=1080&dispsize=24.0&npid=LockScreen"
+  spotlight="http://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&rafb=0&ua=WindowsShellClient%2F0&disphorzres=1920&dispvertres=1080&lo=80000"
 
-  urls=$(for i in `seq 20`; do
+  urls=$(for i in `seq 30`; do
     curl -s "$spotlight" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
   done | sort | uniq)
 
