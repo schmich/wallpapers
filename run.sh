@@ -9,6 +9,9 @@ if [ -z "$path" ]; then
 fi
 
 url=http://www.bing.com$path
+
+echo "Found $url."
+
 file=`echo $url | rev | cut -d/ -f1 | rev`
 out=wallpapers/$file
 
@@ -16,6 +19,8 @@ if [ -f "$out" ]; then
   echo "Wallpaper already exists, exiting."
   exit 1
 fi
+
+echo "Downloading to $out."
 
 mkdir -p wallpapers
 curl -s -o "$out" "$url"
