@@ -46,6 +46,11 @@ function update-spotlight {
     curl -s "$url" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
   done | sort | uniq)
 
+  if [ -z "$image_urls" ]; then
+    echo "[spotlight] Unable to find wallpaper URLs, skipping."
+    return
+  fi
+
   for url in $image_urls; do
     echo "[spotlight] Found $url."
     store-image wallpapers "$url"
