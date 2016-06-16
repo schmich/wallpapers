@@ -42,10 +42,9 @@ function update-bing {
 function update-spotlight {
   url="http://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&cfmt=text,image,poly&sft=jpeg,png,gif&rafb=0&ctry=US&lc=en-US&pl=en-US&ua=Wallpapers&devfam=Windows.Desktop&disphorzres=1920&dispvertres=1080&dispsize=24.0&npid=LockScreen"
 
-  image_urls=''
-  for i in `seq 10`; do
-    image_urls=`(echo $image_urls ; curl -s "$url" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]')`
-  done
+  image_urls=$(for i in `seq 20`; do
+    curl -s "$url" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
+  done | sort | uniq)
 
   for url in $image_urls; do
     echo "[spotlight] Found $url."
