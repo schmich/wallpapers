@@ -7,9 +7,9 @@ function update-manifest() {
 
   entry=`echo '{}' | jq --arg sha1 "$sha1" --arg url "$url" --arg date "$date" '[.sha1=$sha1|.url=$url|.date=$date]'`
 
-  manifesttmp=`mktemp`
-  echo "$entry" | cat "$manifest" - | jq -s add - > "$manifesttmp"
-  mv "$manifesttmp" "$manifest"
+  manifest_tmp=`mktemp`
+  echo "$entry" | cat "$manifest" - | jq -s add - > "$manifest_tmp"
+  mv "$manifest_tmp" "$manifest"
 }
 
 function store-image() {
@@ -32,25 +32,26 @@ function store-image() {
   fi
 
   echo "Downloading $url."
-  imagetmp=`mktemp`
-  curl -s -o "$imagetmp" "$url"
+  image_tmp=`mktemp`
+  curl -s -o "$image_tmp" "$url"
 
   if [ $? -ne 0 ]; then
-    echo "Failed to download image."
+    echo "Failed to download image from $url."
     return
   fi
 
-  sha1=`sha1sum "$imagetmp" | cut -d' ' -f1`
+  sha1=`sha1sum "$image_tmp" | cut -d' ' -f1`
 
   exists=`jq --arg sha1 "$sha1" '.[] | select(.sha1==$sha1)' "$manifest"`
   if [ ! -z "$exists" ]; then
     echo "Already have $url (sha1)."
     update-manifest "$sha1" "$url"
+    rm "$image_tmp"
     return
   fi
 
   extension=`echo $url | rev | cut -d/ -f1 | rev | cut -d# -f1 | cut -d? -f1 | rev | cut -d. -f1 | rev`
-  mv "$imagetmp" "$dest/$sha1.$extension"
+  mv "$image_tmp" "$dest/$sha1.$extension"
 
   update-manifest "$sha1" "$url"
 }

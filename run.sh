@@ -1,11 +1,15 @@
 #!/bin/bash
 
+wallpapers_dir=wallpapers
+
 cd `dirname $0`
-mkdir -p wallpapers
+mkdir -p "$wallpapers_dir"
 
 source ./image.sh
 
 function update-bing {
+  dir=$1
+
   langs="
   af ar-sa ar-eg ar-dz ar-tn ar-ye ar-jo ar-kw ar-bh eu be zh-tw
   zh-hk hr da nl-be en-us en-au en-nz en-za en en-tt fo fi fr-be
@@ -18,44 +22,47 @@ function update-bing {
   es-pe es-ec es-uy es-bo es-hn es-pr sv th tn uk ve xh zu
   "
 
-  basepaths=$(for lang in $langs; do
+  paths=$(for lang in $langs; do
     curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=5&mkt=$lang" | jq -r '.images[].urlbase'
   done | sort | uniq)
 
-  if [ -z "$basepaths" ]; then
+  if [ -z "$paths" ]; then
     echo "[bing] Unable to find wallpaper URLs, skipping."
     return
   fi
 
-  for basepath in $basepaths; do
-    url="http://www.bing.com${basepath}_1920x1080.jpg"
+  for path in $paths; do
+    url="http://www.bing.com${path}_1920x1080.jpg"
     echo "[bing] Found $url."
-    store-image wallpapers "$url"
+    store-image "$dir" "$url"
   done
 }
 
 function update-spotlight {
-  url="http://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&cfmt=text,image,poly&sft=jpeg,png,gif&rafb=0&ctry=US&lc=en-US&pl=en-US&ua=Wallpapers&devfam=Windows.Desktop&disphorzres=1920&dispvertres=1080&dispsize=24.0&npid=LockScreen"
+  dir=$1
 
-  image_urls=$(for i in `seq 20`; do
-    curl -s "$url" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
+  spotlight="http://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&cfmt=text,image,poly&sft=jpeg,png,gif&rafb=0&ctry=US&lc=en-US&pl=en-US&ua=Wallpapers&devfam=Windows.Desktop&disphorzres=1920&dispvertres=1080&dispsize=24.0&npid=LockScreen"
+
+  urls=$(for i in `seq 20`; do
+    curl -s "$spotlight" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
   done | sort | uniq)
 
-  if [ -z "$image_urls" ]; then
+  if [ -z "$urls" ]; then
     echo "[spotlight] Unable to find wallpaper URLs, skipping."
     return
   fi
 
-  for url in $image_urls; do
+  for url in $urls; do
     echo "[spotlight] Found $url."
-    store-image wallpapers "$url"
+    store-image "$dir" "$url"
   done
 }
 
-update-bing
-update-spotlight
+echo "Update wallpapers."
+echo "Update Bing." && update-bing "$wallpapers_dir"
+echo "Update Spotlight." && update-spotlight "$wallpapers_dir"
 
 git checkout -b wallpapers
-git add -v wallpapers
+git add -v "$wallpapers_dir"
 git commit -m "Add wallpapers."
 ssh-agent bash -c "ssh-add wallpapers-key && git push -u origin wallpapers"
