@@ -6,8 +6,8 @@ function download {
   lang=$1
   path=`curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=$lang" | jq '.images[0].url' | tr -d '"'`
   if [ -z "$path" ]; then
-    echo "Unable to find wallpaper URL, exiting."
-    exit 1
+    echo "Unable to find wallpaper URL, skipping."
+    return
   fi
   
   url=http://www.bing.com$path
