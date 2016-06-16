@@ -55,4 +55,4 @@ done
 git checkout -b wallpapers
 git add -v wallpapers
 git commit -m "Add wallpaper."
-ssh-agent bash -c "ssh-add bing-wallpapers-key && git push -u origin wallpapers"
+ssh-agent bash -c "ssh-add wallpapers-key && git push -u origin wallpapers"

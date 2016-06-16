@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ssh-agent bash -c "ssh-add bing-wallpapers-key && git $*"
+ssh-agent bash -c "ssh-add wallpapers-key && git $*"
