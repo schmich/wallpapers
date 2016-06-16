@@ -5,22 +5,6 @@ mkdir -p wallpapers
 
 source ./image.sh
 
-function update-bing-lang {
-  lang=$1
-  basepath=`curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=$lang" | jq -r '.images[0].urlbase'`
-
-  if [ -z "$basepath" ]; then
-    echo "[bing/$lang] Unable to find wallpaper URL, skipping."
-    return
-  fi
-  
-  url="http://www.bing.com${basepath}_1920x1080.jpg"
-  
-  echo "[bing/$lang] Found $url."
-  
-  store-image wallpapers "$url"
-}
-
 function update-bing {
   langs="
   af ar-sa ar-eg ar-dz ar-tn ar-ye ar-jo ar-kw ar-bh eu be zh-tw
@@ -33,9 +17,20 @@ function update-bing {
   it ja lt ms no pl pt ro ru sz sl es es-gt es-pa es-ve es-pe sv
   es-pe es-ec es-uy es-bo es-hn es-pr sv th tn uk ve xh zu
   "
-  
-  for lang in $langs; do
-    update-bing-lang $lang
+
+  basepaths=$(for lang in $langs; do
+    curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=5&mkt=$lang" | jq -r '.images[].urlbase'
+  done | sort | uniq)
+
+  if [ -z "$basepaths" ]; then
+    echo "[bing] Unable to find wallpaper URLs, skipping."
+    return
+  fi
+
+  for basepath in $basepaths; do
+    url="http://www.bing.com${basepath}_1920x1080.jpg"
+    echo "[bing] Found $url."
+    store-image wallpapers "$url"
   done
 }
 
@@ -62,5 +57,5 @@ update-spotlight
 
 git checkout -b wallpapers
 git add -v wallpapers
-git commit -m "Add wallpaper."
+git commit -m "Add wallpapers."
 ssh-agent bash -c "ssh-add wallpapers-key && git push -u origin wallpapers"
