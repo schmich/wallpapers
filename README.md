@@ -1,4 +1,6 @@
-# wallpapers
+# Wallpapers
+
+## Bing & Spotlight Update
 
 - Setup deployment key for repo
   - Create SSH keypair: `ssh-keygen -t rsa -b 8192 -f wallpapers-key -C "you+wallpapers@email.com"` (no password)
@@ -13,3 +15,8 @@
   - Run daily at 10am
   - `crontab -e`
   - `0 10 * * * cd /srv/www/wallpapers && ./update-bing-spotlight.sh 2>&1 | /usr/bin/logger -t wallpapers`
+
+## License
+
+Copyright &copy; 2016 Chris Schmich<br>
+MIT License. See [LICENSE](LICENSE) for details.
