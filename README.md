@@ -22,9 +22,9 @@
 - Authorize app for your account
   - Visit `https://api.imgur.com/oauth2/authorize?client_id=CLIENT_ID&response_type=token`
   - Save `access_token` and `refresh_token` from URL
-- Create Imgur album (sync target)
-  - Save album ID
-  - Update order: Rearrange images > Time uploaded > Descending > Save
+- Create target Imgur album
+  - Save album ID (e.g. `http://imgur.com/a/iMWJw` > `imWJw`)
+  - Update image order: Rearrange images > Time uploaded > Descending > Save
 - Save above info in credentials file (`/srv/www/wallpapers/imgur.json`)
 
     ```
