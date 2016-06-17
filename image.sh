@@ -51,7 +51,7 @@ function store-image() {
     return
   fi
 
-  extension=`echo $url | rev | cut -d/ -f1 | rev | cut -d# -f1 | cut -d? -f1 | rev | cut -d. -f1 | rev`
+  extension=`echo "$url" | rev | cut -d/ -f1 | rev | cut -d# -f1 | cut -d? -f1 | rev | cut -d. -f1 | rev`
   mv "$image_tmp" "$dest/$sha1.$extension"
 
   update-manifest "$sha1" "$url"
