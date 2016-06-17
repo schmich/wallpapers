@@ -13,8 +13,6 @@ echo "Update wallpapers."
 echo "Update Bing." && update-bing "$store"
 echo "Update Spotlight." && update-spotlight "$store"
 
-exit
-
 git checkout -b wallpapers
 git add -v "$store"
 git commit -m "Add wallpapers."
