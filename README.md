@@ -10,6 +10,6 @@
   - `ssh-agent bash -c "ssh-add wallpapers-key && git clone --branch wallpapers git@github.com:you/wallpapers"`
   - `mv wallpapers-key wallpapers`
 - Setup cron job
-  - Run twice daily (6a and 6p)
+  - Run daily at 10am
   - `crontab -e`
-  - `0 6,18 * * * cd /srv/www/wallpapers && ./update.sh 2>&1 | /usr/bin/logger -t wallpapers`
+  - `0 10 * * * cd /srv/www/wallpapers && ./update.sh 2>&1 | /usr/bin/logger -t wallpapers`
