@@ -17,6 +17,7 @@ function update-bing {
 
   paths=$(for lang in $langs; do
     curl -s "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=5&mkt=$lang" | jq -r '.images[].urlbase'
+    sleep 0.1
   done | sort | uniq)
 
   if [ -z "$paths" ]; then

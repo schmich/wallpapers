@@ -7,6 +7,7 @@ function update-spotlight {
 
   urls=$(for i in `seq 30`; do
     curl -s "$spotlight" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
+    sleep 0.1
   done | sort | uniq)
 
   if [ -z "$urls" ]; then
