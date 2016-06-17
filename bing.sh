@@ -1,12 +1,5 @@
 #!/bin/bash
 
-wallpapers_dir=wallpapers
-
-cd `dirname $0`
-mkdir -p "$wallpapers_dir"
-
-source ./image.sh
-
 function update-bing {
   dir=$1
 
@@ -37,32 +30,3 @@ function update-bing {
     store-image "$dir" "$url"
   done
 }
-
-function update-spotlight {
-  dir=$1
-
-  spotlight="http://arc.msn.com/v3/Delivery/Cache?pid=279978&fmt=json&rafb=0&ua=WindowsShellClient%2F0&disphorzres=1920&dispvertres=1080&lo=80000"
-
-  urls=$(for i in `seq 30`; do
-    curl -s "$spotlight" | jq -r '[.batchrsp.items[].item | fromjson | .ad.image_fullscreen_001_landscape.u][]'
-  done | sort | uniq)
-
-  if [ -z "$urls" ]; then
-    echo "[spotlight] Unable to find wallpaper URLs, skipping."
-    return
-  fi
-
-  for url in $urls; do
-    echo "[spotlight] Found $url."
-    store-image "$dir" "$url"
-  done
-}
-
-echo "Update wallpapers."
-echo "Update Bing." && update-bing "$wallpapers_dir"
-echo "Update Spotlight." && update-spotlight "$wallpapers_dir"
-
-git checkout -b wallpapers
-git add -v "$wallpapers_dir"
-git commit -m "Add wallpapers."
-ssh-agent bash -c "ssh-add wallpapers-key && git push -u origin wallpapers"

@@ -12,4 +12,4 @@
 - Setup cron job
   - Run daily at 10am
   - `crontab -e`
-  - `0 10 * * * cd /srv/www/wallpapers && ./update.sh 2>&1 | /usr/bin/logger -t wallpapers`
+  - `0 10 * * * cd /srv/www/wallpapers && ./update-bing-spotlight.sh 2>&1 | /usr/bin/logger -t wallpapers`
