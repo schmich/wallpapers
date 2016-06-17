@@ -1,6 +1,6 @@
 # Wallpapers
 
-## Bing & Spotlight Update
+## Image Update
 
 - Setup deployment key for repo
   - Create SSH keypair: `ssh-keygen -t rsa -b 8192 -f wallpapers-key -C "you+wallpapers@email.com"` (no password)
