@@ -51,7 +51,18 @@ function store-image() {
     return
   fi
 
-  extension=`echo "$url" | rev | cut -d/ -f1 | rev | cut -d# -f1 | cut -d? -f1 | rev | cut -d. -f1 | rev`
+  case `file -b --mime-type "$image_tmp" | tr '[A-Z]' '[a-z]'` in
+    image/jpeg)
+      extension=jpg
+      ;;
+    image/png)
+      extension=png
+      ;;
+    *)
+      extension=jpg
+      ;;
+  esac
+
   mv "$image_tmp" "$dest/$sha1.$extension"
 
   update-manifest "$sha1" "$url"
