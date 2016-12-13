@@ -10708,5 +10708,35 @@
     "sha1": "0ccab6a892fa0b89828525bbe83d338899e43351",
     "url": "http://www.bing.com/az/hprichbg/rb/CircularBarn_EN-GB9453627686_1920x1080.jpg",
     "date": "2016-12-13T04:00:22Z"
+  },
+  {
+    "sha1": "0ccab6a892fa0b89828525bbe83d338899e43351",
+    "url": "http://www.bing.com/az/hprichbg/rb/CircularBarn_EN-CA9453627686_1920x1080.jpg",
+    "date": "2016-12-13T16:00:22Z"
+  },
+  {
+    "sha1": "0ccab6a892fa0b89828525bbe83d338899e43351",
+    "url": "http://www.bing.com/az/hprichbg/rb/CircularBarn_EN-US9453627686_1920x1080.jpg",
+    "date": "2016-12-13T16:00:22Z"
+  },
+  {
+    "sha1": "0ccab6a892fa0b89828525bbe83d338899e43351",
+    "url": "http://www.bing.com/az/hprichbg/rb/CircularBarn_FR-CA9453627686_1920x1080.jpg",
+    "date": "2016-12-13T16:00:23Z"
+  },
+  {
+    "sha1": "0ccab6a892fa0b89828525bbe83d338899e43351",
+    "url": "http://www.bing.com/az/hprichbg/rb/CircularBarn_ROW11417587291_1920x1080.jpg",
+    "date": "2016-12-13T16:00:23Z"
+  },
+  {
+    "sha1": "d11f9073c48dfa94ae630f46ed2befb43d41cc7a",
+    "url": "http://www.bing.com/az/hprichbg/rb/MicoDeNoche_ZH-CN10514469675_1920x1080.jpg",
+    "date": "2016-12-13T16:00:24Z"
+  },
+  {
+    "sha1": "4c5a903a3a39cbeb6470a2957146c8aeaf18a085",
+    "url": "http://www.bing.com/az/hprichbg/rb/TarongaMonkey_EN-AU7440292232_1920x1080.jpg",
+    "date": "2016-12-13T16:00:25Z"
   }
 ]
