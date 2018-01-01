@@ -32873,5 +32873,35 @@
     "sha1": "128ff165c47d6c3db378315468aff73d85088688",
     "url": "http://www.bing.com/az/hprichbg/rb/ManitobaCubs_EN-GB8822758349_1920x1080.jpg",
     "date": "2018-01-01T04:00:22Z"
+  },
+  {
+    "sha1": "128ff165c47d6c3db378315468aff73d85088688",
+    "url": "http://www.bing.com/az/hprichbg/rb/ManitobaCubs_EN-CA8822758349_1920x1080.jpg",
+    "date": "2018-01-01T16:00:21Z"
+  },
+  {
+    "sha1": "128ff165c47d6c3db378315468aff73d85088688",
+    "url": "http://www.bing.com/az/hprichbg/rb/ManitobaCubs_EN-US8822758349_1920x1080.jpg",
+    "date": "2018-01-01T16:00:21Z"
+  },
+  {
+    "sha1": "128ff165c47d6c3db378315468aff73d85088688",
+    "url": "http://www.bing.com/az/hprichbg/rb/ManitobaCubs_FR-CA8822758349_1920x1080.jpg",
+    "date": "2018-01-01T16:00:22Z"
+  },
+  {
+    "sha1": "128ff165c47d6c3db378315468aff73d85088688",
+    "url": "http://www.bing.com/az/hprichbg/rb/ManitobaCubs_ROW9138481010_1920x1080.jpg",
+    "date": "2018-01-01T16:00:23Z"
+  },
+  {
+    "sha1": "9e4c4f2c01acd53972fbecad34366fe052f3a158",
+    "url": "http://www.bing.com/az/hprichbg/rb/TartanWeaving_EN-AU9638927946_1920x1080.jpg",
+    "date": "2018-01-01T16:00:25Z"
+  },
+  {
+    "sha1": "9e4c4f2c01acd53972fbecad34366fe052f3a158",
+    "url": "http://www.bing.com/az/hprichbg/rb/TartanWeaving_ZH-CN8652723934_1920x1080.jpg",
+    "date": "2018-01-01T16:00:26Z"
   }
 ]
