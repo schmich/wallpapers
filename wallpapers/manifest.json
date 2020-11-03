@@ -8218,5 +8218,35 @@
     "sha1": "086eb7031b4441cbb1119e0fb133cd50e46f702a",
     "url": "http://www.bing.com/th?id=OHR.LochLeum_EN-GB8277028517_1920x1080.jpg",
     "date": "2020-11-03T04:00:22Z"
+  },
+  {
+    "sha1": "d5467ab38f22745d3a03be1127a637aecb864b81",
+    "url": "http://www.bing.com/th?id=OHR.Election2020_EN-US1292390471_1920x1080.jpg",
+    "date": "2020-11-03T16:00:20Z"
+  },
+  {
+    "sha1": "73d4c2f2969c7accb6c3331496088b41f9d8b5f1",
+    "url": "http://www.bing.com/th?id=OHR.KobukRiver_EN-AU5101275031_1920x1080.jpg",
+    "date": "2020-11-03T16:00:21Z"
+  },
+  {
+    "sha1": "73d4c2f2969c7accb6c3331496088b41f9d8b5f1",
+    "url": "http://www.bing.com/th?id=OHR.KobukRiver_ZH-CN9932342738_1920x1080.jpg",
+    "date": "2020-11-03T16:00:22Z"
+  },
+  {
+    "sha1": "086eb7031b4441cbb1119e0fb133cd50e46f702a",
+    "url": "http://www.bing.com/th?id=OHR.LochLeum_EN-CA5777076492_1920x1080.jpg",
+    "date": "2020-11-03T16:00:22Z"
+  },
+  {
+    "sha1": "086eb7031b4441cbb1119e0fb133cd50e46f702a",
+    "url": "http://www.bing.com/th?id=OHR.LochLeum_FR-CA7557209617_1920x1080.jpg",
+    "date": "2020-11-03T16:00:22Z"
+  },
+  {
+    "sha1": "086eb7031b4441cbb1119e0fb133cd50e46f702a",
+    "url": "http://www.bing.com/th?id=OHR.LochLeum_ROW3165708075_1920x1080.jpg",
+    "date": "2020-11-03T16:00:23Z"
   }
 ]
